@@ -1,8 +1,8 @@
-
+import Menu from './components/Menu/Menu'
 
 function App() {
   return (
-    <div> MENU</div>
+    <Menu />
   );
 }
 
