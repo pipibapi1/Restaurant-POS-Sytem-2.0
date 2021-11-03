@@ -1,0 +1,14 @@
+@import '../../variable';
+
+.container {
+  flex-grow: 1;
+  padding: 20px 30px;
+  .categoryLabel {
+    padding-bottom: 20px;
+    font-weight: 500;
+  }
+  .flexContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

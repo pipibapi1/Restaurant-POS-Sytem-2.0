@@ -1,5 +1,9 @@
+@import '../../variable';
+
 .menuContainer {
   display: flex;
   flex-direction: column;
-  height: 100vw;
+  width: 66vw;
+  height: 100vh;
+  background: white;
 }
