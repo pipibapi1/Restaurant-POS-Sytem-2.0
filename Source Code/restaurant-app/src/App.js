@@ -1,8 +1,8 @@
-import Menu from './components/Menu/Menu'
+import MenuCart from './pages/MenuCart'
 
 function App() {
   return (
-    <Menu />
+    <MenuCart />
   );
 }
 
