@@ -7,7 +7,7 @@ const MenuItemTable = () => {
   return (
       <div className={style.container}>
         <div className={style.categoryLabel}>Sea Food</div>
-        <div className={style.flexContainer}>
+        <div className={style.gridContainer}>
           {menuItems.map((item, idx) => (
               <MenuItem details={item} idx={idx+1}/>
               )
