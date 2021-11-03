@@ -5,7 +5,7 @@ const MenuCart = () => {
     return (
         <div>
           <Menu />
-          {/*<ShoppingCart />*/}
+          <ShoppingCart />
         </div>
     )
 }

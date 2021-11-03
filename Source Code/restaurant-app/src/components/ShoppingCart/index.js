@@ -1,8 +1,7 @@
-import React from 'react';
-import { useState } from "react";
+import React from 'react'
 import styles from './ShoppingCart.module.scss'
-import CartItem from '../CartItem';
-
+import {useState} from 'react'
+import CartItem from '../CartItem'
 const ShoppingCart = () => {
     const [isDineIn, setIsDineIn] = useState("DINE IN");
 
@@ -12,7 +11,7 @@ const ShoppingCart = () => {
     }
     
     return (
-        <div className={styles.Cart}>
+        <div className={styles.ShoppingCart}>
             {/*header*/}
             <div id={styles.yourCart}> 
                 <div id={styles.cartTitle}>
