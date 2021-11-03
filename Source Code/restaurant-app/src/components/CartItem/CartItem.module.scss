@@ -1,0 +1,41 @@
+.cartItem {
+    border: 2px solid #eeeeee;
+    border-radius: 1vw;
+    margin: 1vw 0vw;
+    text-align: left;
+    padding: 1vw;
+    font-size: 2vw;
+
+    .content{
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+
+        .changeQuantity{
+            .subBtn{
+                border: 2px solid rgb(255, 136, 0);
+                color: rgb(255, 136, 0);
+                border-radius: 1vw;
+                width:2vw;
+                height: 2vw;
+                font-size: 1vw;
+            }
+            .quantity{
+                font-size: 1vw;
+                margin: 0vw 2vw
+            }
+            .addBtn{
+                border: 2px solid rgb(255, 136, 0);
+                border-radius: 1vw;
+                width:2vw;
+                height: 2vw;
+                font-size: 1vw;
+                color: rgb(255, 136, 0);
+            }
+        }
+        .price{
+            font-size: 1vw;
+            color: red;
+        }
+    }
+}
