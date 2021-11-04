@@ -5,7 +5,7 @@ import MenuItemTable from "../MenuItemTable";
 import style from './Menu.module.scss'
 
 const Menu = () => {
-  const [curCategory, setCurCategory] = useState('Juice')
+  const [curCategory, setCurCategory] = useState('')
   const switchCurCategory = (name) => {
     setCurCategory(name)
   }

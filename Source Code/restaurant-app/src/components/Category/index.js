@@ -7,7 +7,6 @@ const Category = ({category, onSwitchCurCategory}) => {
         <div className={style.categoryImgHolder}>
           <img src={category.img} className={style.categoryImg} alt = {category.name}/>
         </div>
-
         {category.name}
       </div>
   );

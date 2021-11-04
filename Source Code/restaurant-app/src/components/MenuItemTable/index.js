@@ -10,7 +10,7 @@ const MenuItemTable = ({curCategory}) => {
         <div className={style.categoryLabel}>{curCategory}</div>
         <div className={style.gridContainer}>
           {menuItems.filter((item) => {
-            return item.category == curCategory
+            return curCategory === '' || item.category === curCategory
           }).map((item, idx) => (
               <MenuItem details={item} idx={idx+1} key = {idx}/>
               )
