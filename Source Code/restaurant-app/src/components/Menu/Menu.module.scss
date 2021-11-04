@@ -1,9 +1,12 @@
 @import '../../variable';
 
 .menuContainer {
-  display: flex;
-  flex-direction: column;
-  width: 66vw;
-  min-height: 100vh;
+  //display: flex;
+  //flex-direction: column;
+  //width: 66vw;
+  //min-height: 100vh;
+  height: 100vh;
   background: white;
+  overflow-y: scroll;
+  background: $gray-canvas
 }

@@ -1,0 +1,13 @@
+.flexContainer {
+  display: flex;
+  height: 100vh;
+  .menuContainer {
+    width: 66vw;
+    flex-shrink: 1;
+  }
+  .cartContainer {
+    width: 34vw;
+    flex-shrink: 1;
+  }
+}
+

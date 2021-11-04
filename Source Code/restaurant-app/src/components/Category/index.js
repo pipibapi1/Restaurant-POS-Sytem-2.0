@@ -1,13 +1,19 @@
 import React from 'react';
 import style from './Category.module.scss'
 
-const Category = ({category, onSwitchCurCategory}) => {
+const Category = ({category, onSwitchCurCategory, itemSize, isSelected}) => {
+  const itemStyle = {
+    height: itemSize,
+    width: itemSize
+  }
+  let className = style.categoryBox
+  if (isSelected === true)
+    className += ' ' + style.selectedItem;
+
   return (
-      <div className={style.categoryBox} onClick = {() => onSwitchCurCategory(category.name)}>
-        <div className={style.categoryImgHolder}>
-          <img src={category.img} className={style.categoryImg} alt = {category.name}/>
-        </div>
-        {category.name}
+      <div className={className} style={itemStyle}  onClick = {() => onSwitchCurCategory(category.name)}>
+        <img src={category.img}  className={style.categoryImg} alt = {category.name}/>
+        <div>{category.name}</div>
       </div>
   );
 };

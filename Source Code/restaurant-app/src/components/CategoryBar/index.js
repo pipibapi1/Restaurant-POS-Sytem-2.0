@@ -4,50 +4,50 @@ import { useState } from 'react';
 import Category from '../Category'
 import categories from './Categories';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 import {VscTriangleRight, VscTriangleLeft} from 'react-icons/vsc'
 
-const CategoryBar = ({onSwitchCurCategory}, ref) => {
+const CategoryBar = ({selectedCategory, onSwitchCurCategory}, ref) => {
   const [headIdx, setHeadIdx] = useState(0)
 
-  const container_width = window.innerWidth * 0.66
   const item_count = 5
-  const item_padding = 30
-  const item_width = 200
+  const item_size = 150
+
   const total_count = categories.length
-  // const moveLeft = () => {
-  //   setLastIndex(lastIndex - nDisplay  < 0 ? categories.length - 1: lastIndex - 1)
-  // }
-  // const moveRight = () => {
-  //   setLastIndex(lastIndex + 1 > categories.length - 1 ? nDisplay - 1 : lastIndex + 1)
-  // }
-  // const gridStyle = {
-  //   display: 'grid',
-  //   gridTemplateColumns: `repeat(${item_count}, ${item_width}px)`,
-  //   gridColumnGap: `${item_padding}px`,
-  // }
+  const moveLeftDisabled = (headIdx === 0)
+  const moveRightDisabled = (total_count - headIdx === item_count)
+
+  const moveLeft = () => {
+    if (moveLeftDisabled)
+      return;
+    setHeadIdx((curHead) => curHead-1)
+  }
+  const moveRight = () => {
+    if (moveRightDisabled)
+      return;
+    setHeadIdx((curHead) => curHead+1)
+  }
+  const gridStyle = {
+    display: 'grid',
+    gridTemplateColumns: `repeat(${item_count}, ${item_size}px)`,
+  }
+
   return (
       <div className={style.container}>
-          <FontAwesomeIcon icon={faChevronLeft}/>
-        <div className={style.groupCategories}>
-          {/*{categories.map((category, index) => (*/}
-          {/*  (lastIndex - nDisplay < index && index <= lastIndex  && <Category*/}
-          {/*    key={category.id}*/}
-          {/*    category = {category}*/}
-          {/*    onSwitchCurCategory = {onSwitchCurCategory}*/}
-          {/*    >*/}
-          {/*  </Category>)*/}
-          {/*))}*/}
+          <FontAwesomeIcon className={`${style.icon} ${moveLeftDisabled && style.disabledIcon}`} icon={faCaretLeft} onClick={moveLeft}/>
+        <div className={style.gridContainer} style={gridStyle}>
           { categories.slice(headIdx, headIdx + item_count).map((item, id) => (
             <Category key={id}
                       category={item}
                       onSwitchCurCategory={onSwitchCurCategory}
-            />))
+                      itemSize={item_size}
+                      isSelected={selectedCategory===item.name}
+                      />))
           }
 
         </div>
-          <FontAwesomeIcon icon={faChevronRight}/>
+          <FontAwesomeIcon className={`${style.icon} ${moveRightDisabled && style.disabledIcon}`} icon={faCaretRight} onClick={moveRight}/>
       </div>
   );
 };

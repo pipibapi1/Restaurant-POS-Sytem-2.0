@@ -7,7 +7,7 @@ const MenuItemTable = ({curCategory}) => {
 
   return (
       <div className={style.container}>
-        <div className={style.categoryLabel}>{curCategory}</div>
+        <div className={style.categoryLabel}>{curCategory === '' ? 'All foods' : curCategory}</div>
         <div className={style.gridContainer}>
           {menuItems.filter((item) => {
             return curCategory === '' || item.category === curCategory
