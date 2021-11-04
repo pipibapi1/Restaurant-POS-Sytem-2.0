@@ -1,11 +1,11 @@
 # Before running app
 You should install additional packages:
-'''
+```
 npm i react-icons
 npm i --save @fortawesome/fontawesome-svg-core
 npm install --save @fortawesome/free-solid-svg-icons
 npm install --save @fortawesome/react-fontawesome
-'''
+```
 
 # Getting Started with Create React App
 
