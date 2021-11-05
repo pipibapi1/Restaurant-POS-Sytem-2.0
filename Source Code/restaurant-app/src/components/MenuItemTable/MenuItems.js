@@ -53,7 +53,7 @@ const menuItems = [
     'name': 'Black Coffee',
     'price': 15000,
     'category': 'Coffee',
-    'imageUrl': 'black_coffee.png'
+    'imageUrl': 'black_coffee.jpg'
   }
 ]
 export default menuItems
