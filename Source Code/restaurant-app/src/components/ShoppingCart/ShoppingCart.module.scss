@@ -71,19 +71,22 @@
 }
 .cartItemCard{
     background-color: white;
-    border: 1px solid gray;
+    border: 1px solid #eeeeee;
     border-radius: 10px;
     color: black;
     font-weight: 600;
-   font-size: 20px;
-   flex-grow: 1;
-   display: flex;
-   flex-direction: row;
-justify-content: space-between;
-   .image{
+    font-size: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    padding: 5px;
+    .image{
        height: 40px;
        width: 40px;
-   }
+       border-radius: 5px;
+    }
     .price{
         color: red;
         top:50%;
@@ -91,25 +94,30 @@ justify-content: space-between;
         font-size: 20px;
        
     }
-    .adjustQuanity{
-        display: flex;
-         flex-direction: row;
-        justify-content: space-evenly;
-        .add{
-            background-color: white;
-            color: red;
-            border-color: red;
-            border-radius: 5px;
-        }
-        
-        .remove{
-            background-color: white;
-            color:gray;
-            border-color: gray;
-            border-radius: 5px;
+    .content{
+        text-align: center;
+        .adjustQuanity{
+            .add{
+                margin: 0px 10px;
+                height: 24px;
+                width: 24px;
+                background-color: white;
+                color: red;
+                border-color: red;
+                border-radius: 12px;
+            }
+            
+            .remove{
+                margin: 0px 10px;
+                height: 24px;
+                width: 24px;
+                background-color: white;
+                color:gray;
+                border-color: gray;
+                border-radius: 12px;
+            }
         }
     }
-   
 }
 
 

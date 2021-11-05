@@ -44,7 +44,7 @@ const ShoppingCart = (props) => {
                       <div>
                             <img className={styles.image} src={ `/ItemImage/${item.imageUrl}`} alt='img'></img>
                       </div>
-                      <div>
+                      <div className={styles.content}>
      
                       <div>{stt+1}.{item.name}</div>
                       <div>
@@ -52,9 +52,9 @@ const ShoppingCart = (props) => {
                         <button onClick={() => onRemove(item)} className={styles.remove}>
                           -
                         </button>
-                        <div>
+                        <span>
                         {item.qty}
-                        </div>
+                        </span>
                         <button onClick={() => onAdd(item)} className={styles.add}>
                           +
                         </button>
