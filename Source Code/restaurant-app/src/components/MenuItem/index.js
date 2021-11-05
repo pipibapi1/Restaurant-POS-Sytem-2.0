@@ -3,7 +3,8 @@ import style from './MenuItem.module.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
-const MenuItem = ({ idx ,details }) => {
+const MenuItem = (props) => {
+  const{idx, details, onAdd} = props
   return (
     <div className={style.itemContainer}>
       <img className={style.itemImg} src={`/ItemImage/${details.imageUrl}`} alt='Menu Item Image'/>
@@ -14,7 +15,9 @@ const MenuItem = ({ idx ,details }) => {
         </div>
         <div className={style.itemFooter}>
           <span>{details.price.toLocaleString()} VND</span>
-          <FontAwesomeIcon className={style.cartIcon} icon={faShoppingCart}/>
+          <button className={style.addButton}>
+                 <FontAwesomeIcon className={style.cartIcon} icon={faShoppingCart} onClick={()=>onAdd(details)}/>
+          </button>
         </div>
       </div>
     </div>

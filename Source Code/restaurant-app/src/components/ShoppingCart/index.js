@@ -1,21 +1,32 @@
 import React from 'react'
 import styles from './ShoppingCart.module.scss'
 import {useState} from 'react'
-import CartItem from '../CartItem'
-const ShoppingCart = () => {
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+
+const ShoppingCart = (props) => {
+    const { cartItems, onAdd, onRemove } = props;
+    const total = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
     const [isDineIn, setIsDineIn] = useState("DINE IN");
 
     const dineInToggleBtn = () =>{
         if (isDineIn === "DINE IN") setIsDineIn("TAKE AWAY");
         else setIsDineIn("DINE IN");
     }
+    const sendOrder = () => {
+      alert("Implement Send Order");
+    }
     
     return (
+      <div>
         <div className={styles.ShoppingCart}>
             {/*header*/}
             <div id={styles.yourCart}> 
                 <div id={styles.cartTitle}>
-                    YOUR CART(<span id="numCartItem">2</span>)
+                <FontAwesomeIcon icon={faShoppingCart}/>
+
+                ({props.countCartItems})
+          
                 </div>
                 <div id={styles.Dinein}>
                     <button id={styles.dineInBtn} onClick={dineInToggleBtn}>
@@ -26,36 +37,56 @@ const ShoppingCart = () => {
 
             {/*list item*/}
             <div id={styles.listItem}>
-                <CartItem id="cartItem1" quantity="2" nameItem="Rice" cost1Item="5000"/>
-                <CartItem id="cartItem2" quantity="3" nameItem="Water" cost1Item="6000"/>
+            {cartItems.length === 0 && <div>Cart is empty</div>}
+            {cartItems.map((item, stt) => (
+                    
+                    <div key={item.id} className={styles.cartItemCard}>
+                      <div>
+                            <img className={styles.image} src={ `/ItemImage/${item.imageUrl}`} alt='img'></img>
+                      </div>
+                      <div>
+     
+                      <div>{stt+1}.{item.name}</div>
+                      <div>
+                      <div className={styles.adjustQuanity}>
+                        <button onClick={() => onRemove(item)} className={styles.remove}>
+                          -
+                        </button>
+                        <div>
+                        {item.qty}
+                        </div>
+                        <button onClick={() => onAdd(item)} className={styles.add}>
+                          +
+                        </button>
+                        </div>
+                      </div>
+                      </div>
+                      <div className={styles.price}>
+                        {item.price.toFixed(0)} VND
+                      </div>
+                  
+                    </div>
+                   
+                  ))
+   
+                  }
+            </div>
+          
+        </div>
+        
+        <div className={styles.checkOut}>
+        <hr />
+            <div className={styles.total}>
+                <div className={styles.total1}>Total: </div>
+                <div className={styles.total2}>{total.toFixed(0)} VND</div>
+            </div>
+           
+            <button id={styles.sendOrder} onClick={() => sendOrder()}>Send order</button>
             </div>
 
-            {/*cost of bill*/}
-            <div id={styles.cost}>
-                <div className={styles.leftCont}>
-                    Total:
-                </div>
-                <div className={styles.rightCont}>
-                    <span id="costNoTax">28000</span> VND
-                </div>
-                <div className={styles.leftCont}>
-                    Tax(10%):
-                </div>
-                <div className={styles.rightCont}>
-                    <span id="Tax">2800</span> VND
-                </div>
-                <div className={styles.leftCont}>
-                    Total cost:
-                </div>
-                <div className={styles.rightCont}>
-                    <span id="costWithTax">30800</span> VND
-                </div>
-            </div>
-            
-            {/*button send order*/}
-            <button id={styles.sendOrder}>Send order</button>
         </div>
     )
+
 }
 
 export default ShoppingCart

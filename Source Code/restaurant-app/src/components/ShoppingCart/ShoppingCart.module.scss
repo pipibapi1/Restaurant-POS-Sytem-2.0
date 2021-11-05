@@ -5,7 +5,8 @@
     //bottom : 0;
     //width: 33vw;
     //height : 100vh;
-    width: 100%;
+    width: 33vw;
+    height : 80vh;
     background-color: white;
     color: black;
     overflow-y: scroll;
@@ -34,13 +35,15 @@
                 font-weight: 600;
                 font-size: 1vw;
                 color: #555555;
+                background: lightskyblue;
             }
         }
     }
     #listItem{
         margin:1vw;
         font-size: 2vw;
-        text-align: center;
+       
+        //text-align: center;
     }
     #cost{
         display: grid;
@@ -62,16 +65,88 @@
         }
     }
 
+   
+    @import '../../variable';
+    
+}
+.cartItemCard{
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 10px;
+    color: black;
+    font-weight: 600;
+   font-size: 20px;
+   flex-grow: 1;
+   display: flex;
+   flex-direction: row;
+justify-content: space-between;
+   .image{
+       height: 40px;
+       width: 40px;
+   }
+    .price{
+        color: red;
+        top:50%;
+        text-align:right;
+        font-size: 20px;
+       
+    }
+    .adjustQuanity{
+        display: flex;
+         flex-direction: row;
+        justify-content: space-evenly;
+        .add{
+            background-color: white;
+            color: red;
+            border-color: red;
+            border-radius: 5px;
+        }
+        
+        .remove{
+            background-color: white;
+            color:gray;
+            border-color: gray;
+            border-radius: 5px;
+        }
+    }
+   
+}
+
+
+.checkOut{
+    border: black;
+    position: absolute;
+    width: 33vw;
+    height : 18vh;
+    .total{
+        flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: 600;
+    .total1{
+        text-align: left;
+        font-size: 25px;
+        color: gray;
+    }
+    .total2{
+        text-align: right;
+        font-size: 25px;
+        color: red;
+        
+    }
+    }
+    
     #sendOrder{
         border-radius: 1vw;
         height: 6vh;
         width: 29vw;
-        position: absolute;
-        top: 90vh;
+        
         color: white;
         background-color: red;
         font-size: 2vw;
         text-align: center;
         margin: 1vw;
     }
+    
 }
