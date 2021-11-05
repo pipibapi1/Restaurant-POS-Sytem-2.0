@@ -41,25 +41,27 @@ const ShoppingCart = (props) => {
             {cartItems.map((item, stt) => (
                     
                     <div key={item.id} className={styles.cartItemCard}>
-                      <div>
-                            <img className={styles.image} src={ `/ItemImage/${item.imageUrl}`} alt='img'></img>
-                      </div>
-                      <div className={styles.content}>
-     
-                      <div>{stt+1}.{item.name}</div>
-                      <div>
-                      <div className={styles.adjustQuanity}>
-                        <button onClick={() => onRemove(item)} className={styles.remove}>
-                          -
-                        </button>
-                        <span>
-                        {item.qty}
-                        </span>
-                        <button onClick={() => onAdd(item)} className={styles.add}>
-                          +
-                        </button>
+                      <div className={styles.imgAndContent}>
+                        <div>
+                              <img className={styles.image} src={ `/ItemImage/${item.imageUrl}`} alt='img'></img>
                         </div>
-                      </div>
+                        <div className={styles.content}>
+      
+                          <div>{stt+1}.{item.name}</div>
+                            <div>
+                              <div className={styles.adjustQuanity}>
+                              <button onClick={() => onRemove(item)} className={styles.remove}>
+                                -
+                              </button>
+                              <span>
+                              {item.qty}
+                              </span>
+                              <button onClick={() => onAdd(item)} className={styles.add}>
+                                +
+                              </button>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                       <div className={styles.price}>
                         {item.price.toFixed(0)} VND

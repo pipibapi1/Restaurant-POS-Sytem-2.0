@@ -82,41 +82,47 @@
     justify-content: space-between;
     margin-bottom: 5px;
     padding: 5px;
-    .image{
-       height: 40px;
-       width: 40px;
-       border-radius: 5px;
+    .imgAndContent{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        .image{
+        height: 40px;
+        width: 40px;
+        border-radius: 5px;
+        }
+        .content{
+            margin-left: 10px;
+            text-align: left;
+            .adjustQuanity{
+                .add{
+                    margin: 0px 10px;
+                    height: 24px;
+                    width: 24px;
+                    background-color: white;
+                    color: red;
+                    border-color: red;
+                    border-radius: 12px;
+                }
+                
+                .remove{
+                    margin: 0px 10px;
+                    height: 24px;
+                    width: 24px;
+                    background-color: white;
+                    color:gray;
+                    border-color: gray;
+                    border-radius: 12px;
+                }
+            }
+        }
     }
     .price{
         color: red;
         top:50%;
         text-align:right;
         font-size: 20px;
-       
-    }
-    .content{
-        text-align: center;
-        .adjustQuanity{
-            .add{
-                margin: 0px 10px;
-                height: 24px;
-                width: 24px;
-                background-color: white;
-                color: red;
-                border-color: red;
-                border-radius: 12px;
-            }
-            
-            .remove{
-                margin: 0px 10px;
-                height: 24px;
-                width: 24px;
-                background-color: white;
-                color:gray;
-                border-color: gray;
-                border-radius: 12px;
-            }
-        }
     }
 }
 
@@ -128,21 +134,21 @@
     height : 18vh;
     .total{
         flex-grow: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-weight: 600;
-    .total1{
-        text-align: left;
-        font-size: 25px;
-        color: gray;
-    }
-    .total2{
-        text-align: right;
-        font-size: 25px;
-        color: red;
-        
-    }
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-weight: 600;
+        .total1{
+            text-align: left;
+            font-size: 25px;
+            color: gray;
+        }
+        .total2{
+            text-align: right;
+            font-size: 25px;
+            color: red;
+            
+        }
     }
     
     #sendOrder{
