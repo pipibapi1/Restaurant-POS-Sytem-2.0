@@ -64,7 +64,7 @@ const ShoppingCart = (props) => {
                         </div>
                       </div>
                       <div className={styles.price}>
-                        {item.price.toFixed(0)} VND
+                        {item.price.toFixed(0)*item.qty} VND
                       </div>
                   
                     </div>
