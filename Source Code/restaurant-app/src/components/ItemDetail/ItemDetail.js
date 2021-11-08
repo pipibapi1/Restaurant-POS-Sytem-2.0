@@ -8,6 +8,7 @@ const MODAL_STYLES = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     backgroundColor: '#FFF',
+    borderRadius: '25px',
     padding: '50px',
     zIndex: 1000
   }
@@ -20,7 +21,8 @@ const MODAL_STYLES = {
     bottom: 0,
     backgroundColor: 'rgba(0, 0, 0, .7)',
     zIndex: 1000
-  }
+  } 
+
 
 function ItemDetail({showDetail, itemDetail, closeDetail, onAdd}) {
     const [quantity, setQuantity] = useState(0);
@@ -44,18 +46,26 @@ function ItemDetail({showDetail, itemDetail, closeDetail, onAdd}) {
                 <div style={OVERLAY_STYLES} />
                 <div style={MODAL_STYLES}>
                     <div className={style.modal}>
-                        <button onClick={() => closeDetail()}> Close</button>
+                        <div className={style.header}>
+                            <div className={style.label}>ADD TO CART</div>
+                            <button onClick={() => closeDetail()}> Close</button>
+                        </div>
+                        <div>
+                            <img className={style.image} src={`/ItemImage/${itemDetail.imageUrl}`} />
+                        </div>
+                        <div>{itemDetail.id}</div>
                         <div>{itemDetail.name}</div>
                         <div>{itemDetail.price}</div>
                         <div>{itemDetail.category}</div>
-                        <button onClick={() => removeOne()}>-</button>
-                        <span>
-                        {quantity}
-                        </span>
-                        <button onClick={() => addOne()}>+</button>
-                        <img src={`/ItemImage/${itemDetail.imageUrl}`} />
+                        <div className={style.adjustQuanity}>
+                            <button className={style.remove} onClick={() => removeOne()}>-</button>
+                            <span>
+                            {quantity}
+                            </span>
+                            <button className={style.add} onClick={() => addOne()}>+</button>
+                        </div>
                         
-                        <button onClick={() => addToCart()}> AddToCart</button>
+                        <button className={style.addButton}onClick={() => addToCart()}>{quantity*itemDetail.price} VND</button>
                     </div>
                 </div>
                 </>
