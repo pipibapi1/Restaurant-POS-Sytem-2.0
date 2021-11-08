@@ -34,7 +34,8 @@ function ItemDetail({showDetail, itemDetail, closeDetail, onAdd}) {
     }
     const addToCart = () => {
         onAdd(itemDetail, quantity);
-        closeDetail()
+        closeDetail();
+        setQuantity(0);
     }
     return (
         <div>
