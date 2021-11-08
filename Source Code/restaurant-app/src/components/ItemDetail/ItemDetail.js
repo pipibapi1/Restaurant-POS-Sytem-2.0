@@ -32,6 +32,10 @@ function ItemDetail({showDetail, itemDetail, closeDetail, onAdd}) {
             setQuantity(quantity-1);
         }
     }
+    const addToCart = () => {
+        onAdd(itemDetail, quantity);
+        closeDetail()
+    }
     return (
         <div>
             {showDetail ?(
@@ -50,7 +54,7 @@ function ItemDetail({showDetail, itemDetail, closeDetail, onAdd}) {
                         <button onClick={() => addOne()}>+</button>
                         <img src={`/ItemImage/${itemDetail.imageUrl}`} />
                         
-                        <button onClick={() => onAdd(itemDetail, quantity)}> AddToCart</button>
+                        <button onClick={() => addToCart()}> AddToCart</button>
                     </div>
                 </div>
                 </>
