@@ -3,9 +3,13 @@ import style from './MenuItem.module.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
+
+
 const MenuItem = (props) => {
   const{idx, details, onAdd} = props
+
   return (
+  <div>
     <div className={style.itemContainer}>
       <img className={style.itemImg} src={`/ItemImage/${details.imageUrl}`} alt='Menu Item Image'/>
       <div className={style.basicInfo}>
@@ -21,6 +25,8 @@ const MenuItem = (props) => {
         </div>
       </div>
     </div>
+    
+  </div>
   );
 };
 

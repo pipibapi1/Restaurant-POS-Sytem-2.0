@@ -56,7 +56,7 @@ const ShoppingCart = (props) => {
                               <span>
                               {item.qty}
                               </span>
-                              <button onClick={() => onAdd(item)} className={styles.add}>
+                              <button onClick={() => onAdd(item, 1)} className={styles.add}>
                                 +
                               </button>
                             </div>

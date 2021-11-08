@@ -5,6 +5,8 @@ npm i react-icons
 npm i --save @fortawesome/fontawesome-svg-core
 npm install --save @fortawesome/free-solid-svg-icons
 npm install --save @fortawesome/react-fontawesome
+npm i styled-components
+npm i react-spring@next
 ```
 
 # Getting Started with Create React App
