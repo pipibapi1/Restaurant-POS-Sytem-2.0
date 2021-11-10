@@ -64,7 +64,7 @@ const ShoppingCart = (props) => {
                         </div>
                       </div>
                       <div className={styles.price}>
-                        {item.price.toFixed(0)*item.qty} VND
+                        {item.price.toFixed(0)*item.qty/1000},000 VND
                       </div>
                   
                     </div>
@@ -80,7 +80,7 @@ const ShoppingCart = (props) => {
         <hr />
             <div className={styles.total}>
                 <div className={styles.total1}>Total: </div>
-                <div className={styles.total2}>{total.toFixed(0)} VND</div>
+                <div className={styles.total2}>{total.toFixed(0)/1000},000 VND</div>
             </div>
            
             <button id={styles.sendOrder} onClick={() => sendOrder()}>Send order</button>

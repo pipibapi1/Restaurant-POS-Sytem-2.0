@@ -20,7 +20,7 @@ const MenuItem = (props) => {
         <div className={style.itemFooter}>
           <span>{details.price.toLocaleString()} VND</span>
           <button className={style.addButton}>
-                 <FontAwesomeIcon className={style.cartIcon} icon={faShoppingCart} onClick={()=>onAdd(details)}/>
+                 <FontAwesomeIcon className={style.cartIcon} icon={faShoppingCart} onClick={()=>onAdd(details,1)}/>
           </button>
         </div>
       </div>

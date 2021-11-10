@@ -46,7 +46,7 @@ const MenuCart = () => {
 
         <div className={style.flexContainer}>
           <div className={style.menuContainer}>
-            <Menu onAdd={onAddInfo}> </Menu>
+            <Menu onAdd={onAdd}> </Menu>
           </div>
           
           <div className={style.cartContainer}>
