@@ -14,7 +14,7 @@ const ShoppingCart = (props) => {
         else setIsDineIn("DINE IN");
     }
     const sendOrder = () => {
-      alert("Implement Send Order");
+      alert("Implement Payment UI");
     }
     
     return (

@@ -71,6 +71,7 @@ function ItemDetail({showDetail, itemDetail, closeDetail, onAdd}) {
                             <div>{itemDetail.name}</div>
                             <div>{itemDetail.price.toLocaleString()}</div>
                             <div>{itemDetail.category}</div>
+                            <div>{itemDetail.description}</div>
                             <div className={style.adjustQuanity}>
                                 <button className={style.remove} onClick={() => removeOne()}>-</button>
                                 <span>
