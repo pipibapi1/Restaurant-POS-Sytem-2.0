@@ -39,9 +39,12 @@ function ItemDetail({showDetail, itemDetail, closeDetail, onAdd}) {
         }
     }
     const addToCart = () => {
-        onAdd(itemDetail, quantity);
+        if(quantity > 0){
+            onAdd(itemDetail, quantity);
         closeDetail();
         setQuantity(0);
+        }
+        
     }
     const close = () => {
         closeDetail();
