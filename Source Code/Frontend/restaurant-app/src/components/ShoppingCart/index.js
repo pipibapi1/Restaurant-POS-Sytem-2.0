@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const ShoppingCart = (props) => {
-    const { cartItems, onAdd, onRemove } = props;
+    const { cartItems, onAdd, onRemove, openPayment} = props;
     const total = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
     const [isDineIn, setIsDineIn] = useState("DINE IN");
 
@@ -14,7 +14,10 @@ const ShoppingCart = (props) => {
         else setIsDineIn("DINE IN");
     }
     const sendOrder = () => {
-      alert("Implement Payment UI");
+      let detail = {};
+      detail.total=total;
+      detail.numItem=props.countCartItems;
+      openPayment(detail);
     }
     
     return (

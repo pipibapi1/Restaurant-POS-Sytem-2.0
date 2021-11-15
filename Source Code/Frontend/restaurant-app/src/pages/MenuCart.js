@@ -3,13 +3,15 @@ import {  Menu, ShoppingCart } from "../components";
 import style from './ShoppingCart.module.scss'
 import { useState } from 'react';
 import ItemDetail from '../components/ItemDetail/ItemDetail';
-
+import PaymentDetail from '../components/PaymentDetail/PaymentDetail';
 
 
 const MenuCart = () => {
   const [showDetail, setShowDetail] = useState(false);
   const [itemDetail, setItemDetail] = useState("");
-  
+  const [showPayment, setShowPayment] = useState(false);
+  const [paymentDetail, setPaymentDetail] = useState("");
+
   const [cartItems, setCartItems] = useState([]);
   const onAddInfo = (product) => {
       setShowDetail(true);
@@ -42,6 +44,18 @@ const MenuCart = () => {
       );
     }
   };
+
+  const closePaymentDetail = () => {
+    setShowPayment(false);
+  }
+  const openPayment = (detail) => {
+    setPaymentDetail(detail);
+    setShowPayment(true);
+  }
+  const clearCart = () => {
+    setCartItems([]);
+  }
+
     return (
 
         <div className={style.flexContainer}>
@@ -55,12 +69,16 @@ const MenuCart = () => {
                    cartItems={cartItems}
                    onAdd={onAdd}
                    onRemove={onRemove}
+                   openPayment={openPayment}
             >
               </ShoppingCart>
           </div>
           <div >
-                <ItemDetail  showDetail={showDetail} itemDetail={itemDetail} closeDetail={closeDetail} onAdd={onAdd}/>
-            </div>
+              <ItemDetail  showDetail={showDetail} itemDetail={itemDetail} closeDetail={closeDetail} onAdd={onAdd}/>
+          </div>
+          <div>
+              <PaymentDetail showPayment={showPayment} paymentDetail={paymentDetail} closePaymentDetail={closePaymentDetail} clearCart={clearCart}/>
+          </div>
         </div>
 
     )
