@@ -3,12 +3,16 @@ import styles from './ShoppingCart.module.scss'
 import {useState} from 'react'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const ShoppingCart = (props) => {
     const { cartItems, onAdd, onRemove, openPayment} = props;
     const total = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
     const [isDineIn, setIsDineIn] = useState("DINE IN");
     const [errMessage, setErrMessage] = useState("");
+
+    const MySwal = withReactContent(Swal);
 
     const dineInToggleBtn = () =>{
         if (isDineIn === "DINE IN") setIsDineIn("TAKE AWAY");
@@ -18,6 +22,11 @@ const ShoppingCart = (props) => {
       if (props.countCartItems == 0)
       {
         setErrMessage("*Your cart must have 1 or more items");
+        MySwal.fire({
+          icon: 'error',
+          title: 'Error!',
+          text: 'Your cart must have 1 or more items.',
+        })
       }
       else
       {

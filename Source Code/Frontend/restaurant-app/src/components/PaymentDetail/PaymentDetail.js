@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import style from './PaymentDetail.module.scss'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const MODAL_STYLES = {
     position: 'fixed',
@@ -27,7 +29,7 @@ const MODAL_STYLES = {
 
 function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCart}){
     const [errMessage, setErrMessage] = useState("");
-    
+    const MySwal = withReactContent(Swal);
     const sendOrder = () => {
         let byMoneyRadio = document.getElementById("byMoney");
         let byCreditCardRadio = document.getElementById("byCreditCard");
@@ -35,9 +37,19 @@ function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCar
         {
             clearCart();
             closePaymentDetail();
+            MySwal.fire({
+                icon: 'success',
+                title: 'Successful!',
+                text: 'Your order wil be processed soon.',
+            })
         }
         else {
             setErrMessage("*You must choose 1 payment method")
+            MySwal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: 'You must choose 1 payment method.',
+            })
         }
     }
 
