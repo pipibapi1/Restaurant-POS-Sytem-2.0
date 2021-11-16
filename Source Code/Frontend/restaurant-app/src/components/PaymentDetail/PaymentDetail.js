@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './PaymentDetail.module.scss'
-import { useState } from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 
@@ -27,44 +26,54 @@ const MODAL_STYLES = {
 
 
 function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCart}){
+    const [errMessage, setErrMessage] = useState("");
+    
     const sendOrder = () => {
-        clearCart();
-        closePaymentDetail();
+        let byMoneyRadio = document.getElementById("byMoney");
+        let byCreditCardRadio = document.getElementById("byCreditCard");
+        if ((byCreditCardRadio.checked == true) || (byMoneyRadio.checked == true))
+        {
+            clearCart();
+            closePaymentDetail();
+        }
+        else {
+            setErrMessage("*You must choose 1 payment method")
+        }
     }
 
     return (
         <div>
             {showPayment ?(
                 <>
-                <div style={OVERLAY_STYLES} />
+                <div style={OVERLAY_STYLES}/>
                 <div style={MODAL_STYLES}>
                     <div className={style.modal}>
-                    <div className={style.header}>
+                        <div className={style.header}>
                             <div className={style.label}>CONFIRM PURCHASE</div>
                             <button className={style.closeButton} onClick={closePaymentDetail}> 
                                 <FontAwesomeIcon icon={faTimes}/>
                             </button>
                         </div>
                         <div>
-                        Total cost: {paymentDetail.total.toLocaleString()}<br/>
-                        Choose payment method:<br/>
-                        <input type="radio" id="byMoney" name="method" value="byMoney"/>
-                            <label for="byMoney">Pay at the counter</label><br/>
-                        <input type="radio" id="byCreditCard" name="method" value="byCreditCard"/>
-                            <label for="byCreditCard">Credit card</label><br/>
-                        <button onClick={sendOrder}>
-                            Confirm
-                        </button><br/>
-                        <button onClick={closePaymentDetail}>
-                            Cancel
-                        </button>
+                            Total cost: {paymentDetail.total.toLocaleString()}<br/>
+                            Choose payment method:<br/>
+                            <div>{errMessage}</div>
+                            <input type="radio" id="byMoney" name="method" value="byMoney"/>
+                                <label htmlFor="byMoney">Pay at the counter</label><br/>
+                            <input type="radio" id="byCreditCard" name="method" value="byCreditCard"/>
+                                <label htmlFor="byCreditCard">Credit card</label><br/>
+                            <button onClick={sendOrder}>
+                                Confirm
+                            </button><br/>
+                            <button onClick={closePaymentDetail}>
+                                Cancel
+                            </button>
                         </div>
                     </div>
                 </div>
                 </>
             )
             : null}
-
         </div>
         
     )

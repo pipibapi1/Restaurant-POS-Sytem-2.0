@@ -152,7 +152,9 @@
             
         }
     }
-    
+    .err{
+        color: #ff0000;
+    }
     #sendOrder{
         border-radius: 1vw;
         height: 6vh;
@@ -160,7 +162,7 @@
         
         color: white;
         background-color: red;
-        font-size: 2vw;
+        font-size: 4vh;
         text-align: center;
         margin: 1vw;
         font-family: 'Times New Roman', Times, serif;

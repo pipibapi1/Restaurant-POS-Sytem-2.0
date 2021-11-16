@@ -55,7 +55,6 @@ const MenuCart = () => {
   const clearCart = () => {
     setCartItems([]);
   }
-
     return (
 
         <div className={style.flexContainer}>

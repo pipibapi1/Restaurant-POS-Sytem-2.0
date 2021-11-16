@@ -8,16 +8,25 @@ const ShoppingCart = (props) => {
     const { cartItems, onAdd, onRemove, openPayment} = props;
     const total = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
     const [isDineIn, setIsDineIn] = useState("DINE IN");
+    const [errMessage, setErrMessage] = useState("");
 
     const dineInToggleBtn = () =>{
         if (isDineIn === "DINE IN") setIsDineIn("TAKE AWAY");
         else setIsDineIn("DINE IN");
     }
     const sendOrder = () => {
-      let detail = {};
-      detail.total=total;
-      detail.numItem=props.countCartItems;
-      openPayment(detail);
+      if (props.countCartItems == 0)
+      {
+        setErrMessage("*Your cart must have 1 or more items");
+      }
+      else
+      {
+        let detail = {};
+        detail.total=total;
+        detail.numItem=props.countCartItems;
+        openPayment(detail);
+        setErrMessage("");
+      }
     }
     
     return (
@@ -85,7 +94,7 @@ const ShoppingCart = (props) => {
                 <div className={styles.total1}>Total: </div>
                 <div className={styles.total2}>{total.toLocaleString()} VND</div>
             </div>
-           
+            <div className={styles.err}>{errMessage}</div>
             <button id={styles.sendOrder} onClick={() => sendOrder()}>
                 PAYMENT
             </button>
