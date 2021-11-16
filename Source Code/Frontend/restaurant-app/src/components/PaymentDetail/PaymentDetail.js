@@ -31,6 +31,7 @@ function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCar
         clearCart();
         closePaymentDetail();
     }
+
     return (
         <div>
             {showPayment ?(
@@ -39,16 +40,20 @@ function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCar
                 <div style={MODAL_STYLES}>
                     <div className={style.modal}>
                     <div className={style.header}>
-                            <div className={style.label}>CHOOSE PAYMENT METHOD</div>
+                            <div className={style.label}>CONFIRM PURCHASE</div>
                             <button className={style.closeButton} onClick={closePaymentDetail}> 
                                 <FontAwesomeIcon icon={faTimes}/>
                             </button>
                         </div>
                         <div>
-                        Totalcost: {paymentDetail.total.toLocaleString()}<br/>
-                        Num item: {paymentDetail.numItem}<br/>
+                        Total cost: {paymentDetail.total.toLocaleString()}<br/>
+                        Choose payment method:<br/>
+                        <input type="radio" id="byMoney" name="method" value="byMoney"/>
+                            <label for="byMoney">Pay at the counter</label><br/>
+                        <input type="radio" id="byCreditCard" name="method" value="byCreditCard"/>
+                            <label for="byCreditCard">Credit card</label><br/>
                         <button onClick={sendOrder}>
-                            Send order
+                            Confirm
                         </button><br/>
                         <button onClick={closePaymentDetail}>
                             Cancel
