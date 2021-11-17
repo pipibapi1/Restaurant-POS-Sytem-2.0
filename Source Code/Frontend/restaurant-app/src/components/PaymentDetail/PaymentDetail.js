@@ -30,18 +30,43 @@ const MODAL_STYLES = {
 function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCart}){
     const [errMessage, setErrMessage] = useState("");
     const MySwal = withReactContent(Swal);
+    const [showCCDetail, setShowCCDetail] = useState(false);
+
     const sendOrder = () => {
         let byMoneyRadio = document.getElementById("byMoney");
         let byCreditCardRadio = document.getElementById("byCreditCard");
         if ((byCreditCardRadio.checked == true) || (byMoneyRadio.checked == true))
         {
-            clearCart();
-            closePaymentDetail();
-            MySwal.fire({
-                icon: 'success',
-                title: 'Successful!',
-                text: 'Your order will be processed soon.',
-            })
+            if (byCreditCardRadio.checked == true){
+                let cardNum = document.getElementById("cardNum").value;
+                let exDate = document.getElementById("exDate").value;
+                let cvv = document.getElementById("cvv").value;
+                if ((cardNum === "") || (exDate === "") || (cvv === "")){
+                    MySwal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: 'You must enter all field.',
+                    })
+                }
+                else{
+                    clearCart();
+                    closePaymentDetail();
+                    MySwal.fire({
+                        icon: 'success',
+                        title: 'Successful!',
+                        text: 'Your order will be processed soon.',
+                    })
+                }
+            }
+            else {
+                clearCart();
+                closePaymentDetail();
+                MySwal.fire({
+                    icon: 'success',
+                    title: 'Successful!',
+                    text: 'Your order will be processed soon.',
+                })
+            }
         }
         else {
             setErrMessage("*You must choose 1 payment method")
@@ -51,6 +76,10 @@ function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCar
                 text: 'You must choose 1 payment method.',
             })
         }
+    }
+    const close = () => {
+        setShowCCDetail(false);
+        closePaymentDetail();
     }
 
     return (
@@ -62,7 +91,7 @@ function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCar
                     <div className={style.modal}>
                         <div className={style.header}>
                             <div className={style.label}>CONFIRM PURCHASE</div>
-                            <button className={style.closeButton} onClick={closePaymentDetail} > 
+                            <button className={style.closeButton} onClick={close} > 
                                 <FontAwesomeIcon icon={faTimes}/>
                             </button>
                         </div>
@@ -78,19 +107,37 @@ function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCar
                         <div className={style.errMessage}>{errMessage}</div>
                         <div className = {style.paymentMethod}>
                             <div className={style.radioItem}>
-                                <input type="radio" id="byMoney" name="method" value="byMoney" />
+                                <input type="radio" id="byMoney" name="method" value="byMoney" onClick={() => setShowCCDetail(false)}/>
                                 <label htmlFor="byMoney">Pay at the counter</label><br/>
                             </div>
                             <div className={style.radioItem}>
-                                <input type="radio" id="byCreditCard" name="method" value="byCreditCard" className = {style.btnCredit}/>
+                                <input type="radio" id="byCreditCard" name="method" value="byCreditCard"  onClick={() => setShowCCDetail(true)}/>
                                 <label htmlFor="byCreditCard" >Credit card</label><br/>
                             </div>
+                            {showCCDetail ? (
+                                <div className={style.CCDetail}>
+                                    <div className={style.cardNumber}>
+                                        Card number:<br/>
+                                        <input type="text" name="cardNum" id="cardNum"></input>
+                                    </div>
+                                    <div className={style.dateAndCvv}>
+                                        <div className={style.date}>
+                                            Expiry date:<br/>
+                                            <input type="date" name="exDate" id="exDate"></input>
+                                        </div>
+                                        <div className={style.cvv}>
+                                            CVV:<br/>
+                                            <input type="password" name="cvv" id="cvv"></input>
+                                        </div>
+                                    </div>
+                                </div>
+                            ):null}
                         </div>
                         <div className = {style.buttonField}>
                             <button onClick={sendOrder} className={style.confirmButton}>
                                 Confirm
                             </button><br/>
-                            <button onClick={closePaymentDetail} className={style.cancelButton}>
+                            <button onClick={close} className={style.cancelButton}>
                                 Cancel
                             </button>
                         </div>
