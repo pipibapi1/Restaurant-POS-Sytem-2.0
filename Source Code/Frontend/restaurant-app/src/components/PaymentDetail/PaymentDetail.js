@@ -62,22 +62,35 @@ function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCar
                     <div className={style.modal}>
                         <div className={style.header}>
                             <div className={style.label}>CONFIRM PURCHASE</div>
-                            <button className={style.closeButton} onClick={closePaymentDetail}> 
+                            <button className={style.closeButton} onClick={closePaymentDetail} > 
                                 <FontAwesomeIcon icon={faTimes}/>
                             </button>
                         </div>
-                        <div>
-                            Total cost: {paymentDetail.total.toLocaleString()}<br/>
-                            Choose payment method:<br/>
-                            <div>{errMessage}</div>
-                            <input type="radio" id="byMoney" name="method" value="byMoney"/>
+                        <div className = {style.total}>
+                            Total cost: 
+                            <div className = {style.totalValue}>
+                                {paymentDetail.total.toLocaleString()} VND
+                            </div>
+                        </div>
+                        <div className = {style.choosePayment}>
+                            Choose payment method:
+                        </div>
+                        <div className={style.errMessage}>{errMessage}</div>
+                        <div className = {style.paymentMethod}>
+                            <div className={style.radioItem}>
+                                <input type="radio" id="byMoney" name="method" value="byMoney" />
                                 <label htmlFor="byMoney">Pay at the counter</label><br/>
-                            <input type="radio" id="byCreditCard" name="method" value="byCreditCard"/>
-                                <label htmlFor="byCreditCard">Credit card</label><br/>
-                            <button onClick={sendOrder}>
+                            </div>
+                            <div className={style.radioItem}>
+                                <input type="radio" id="byCreditCard" name="method" value="byCreditCard" className = {style.btnCredit}/>
+                                <label htmlFor="byCreditCard" >Credit card</label><br/>
+                            </div>
+                        </div>
+                        <div className = {style.buttonField}>
+                            <button onClick={sendOrder} className={style.confirmButton}>
                                 Confirm
                             </button><br/>
-                            <button onClick={closePaymentDetail}>
+                            <button onClick={closePaymentDetail} className={style.cancelButton}>
                                 Cancel
                             </button>
                         </div>
