@@ -25,6 +25,7 @@
             font-weight: 1000;
         }
         .closeButton{
+            margin: 10px;
             background: none ;
             border: none;
             cursor: pointer;
@@ -38,10 +39,9 @@
         font-size: 150%;
         font-weight: bold;
         font-family: sans-serif;
-        display: flex;
-        .totalValue{
-            margin-left: 230px;
-        }
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-around;
     }
     .errMessage{
         margin-top: 0.5vh;
@@ -54,10 +54,46 @@
     }
     .paymentMethod{
         margin-top: 2vh;
-        display: flex;
         font-family: sans-serif;
-        .btnCredit{
-            margin-left: 5vw;
+
+        .radioItem {
+            position: relative;
+            padding: 0 6px;
+            margin: 10px 0 0;
+
+            input[type='radio'] {
+                display: none;
+            }
+
+            label{
+                color: #666;
+                font-weight: normal;
+            }
+
+            label:before {
+                content: " ";
+                display: inline-block;
+                position: relative;
+                top: 5px;
+                margin: 0 5px 0 0;
+                width: 16px;
+                height: 16px;
+                border-radius: 11px;
+                border: 2px solid #00ff4c;
+                background-color: transparent;
+            }
+
+            input[type=radio]:checked + label:after {
+                border-radius: 11px;
+                width: 12px;
+                height: 12px;
+                position: absolute;
+                top: 9px;
+                left: 10px;
+                content: " ";
+                display: block;
+                background: #00ff4c;
+            }
         }
     }
     .imageLane{
@@ -69,33 +105,33 @@
             margin-left: 10px;
             }
     }
-    
-    .confirmButton{
-        border-radius: 1vw;
-        height: 4vh;
-        width: 20vw;
-        
-        color: white;
-        background-color: red;
-        font-size: 3vh;
+    .buttonField {
         text-align: center;
-        margin-left: 3vw;
-        margin-top: 3vh;
-        font-family: 'Times New Roman', Times, sans-serif;
-        font-weight: bold;
-    }
-    .cancelButton{
-        border-radius: 1vw;
-        height: 4vh;
-        width: 20vw;
-        
-        color: black;
-        background-color: gray;
-        font-size: 3vh;
-        text-align: center;
-        margin-left: 3vw;
-        margin-top: 1vh;
-        font-family: 'Times New Roman', Times, sans-serif;
-        font-weight: bold;
+        .confirmButton{
+            border-radius: 1vw;
+            height: 4vh;
+            width: 20vw;
+            
+            color: black;
+            background-color: #00ff4c;
+            font-size: 3vh;
+            text-align: center;
+            margin-top: 5vh;
+            font-family: 'Times New Roman', Times, sans-serif;
+            font-weight: bold;
+        }
+        .cancelButton{
+            border-radius: 1vw;
+            height: 4vh;
+            width: 20vw;
+            
+            color: #00aeff;
+            background-color: white;
+            font-size: 3vh;
+            text-align: center;
+            margin-top: 3vh;
+            font-family: 'Times New Roman', Times, sans-serif;
+            font-weight: bold;
+        }
     }
 }

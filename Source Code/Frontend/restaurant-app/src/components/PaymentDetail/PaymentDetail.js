@@ -66,31 +66,33 @@ function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCar
                                 <FontAwesomeIcon icon={faTimes}/>
                             </button>
                         </div>
-                        <div>
-                            <div className = {style.total}>
-                                Total cost: 
-                                <div className = {style.totalValue}>
-                                    {paymentDetail.total.toLocaleString()} VND
-                                </div>
+                        <div className = {style.total}>
+                            Total cost: 
+                            <div className = {style.totalValue}>
+                                {paymentDetail.total.toLocaleString()} VND
                             </div>
-                            <div className = {style.choosePayment}>
-                                Choose payment method:
-                            </div>
-                            <div className={style.errMessage}>{errMessage}</div>
-                            <div className = {style.paymentMethod}>
+                        </div>
+                        <div className = {style.choosePayment}>
+                            Choose payment method:
+                        </div>
+                        <div className={style.errMessage}>{errMessage}</div>
+                        <div className = {style.paymentMethod}>
+                            <div className={style.radioItem}>
                                 <input type="radio" id="byMoney" name="method" value="byMoney" />
-                                    <label htmlFor="byMoney">Pay at the counter</label><br/>
+                                <label htmlFor="byMoney">Pay at the counter</label><br/>
+                            </div>
+                            <div className={style.radioItem}>
                                 <input type="radio" id="byCreditCard" name="method" value="byCreditCard" className = {style.btnCredit}/>
-                                    <label htmlFor="byCreditCard" >Credit card</label><br/>
+                                <label htmlFor="byCreditCard" >Credit card</label><br/>
                             </div>
-                            <div className = "buttonField">
-                                <button onClick={sendOrder} className={style.confirmButton}>
-                                    Confirm
-                                </button><br/>
-                                <button onClick={closePaymentDetail} className={style.cancelButton}>
-                                    Cancel
-                                </button>
-                            </div>
+                        </div>
+                        <div className = {style.buttonField}>
+                            <button onClick={sendOrder} className={style.confirmButton}>
+                                Confirm
+                            </button><br/>
+                            <button onClick={closePaymentDetail} className={style.cancelButton}>
+                                Cancel
+                            </button>
                         </div>
                     </div>
                 </div>
