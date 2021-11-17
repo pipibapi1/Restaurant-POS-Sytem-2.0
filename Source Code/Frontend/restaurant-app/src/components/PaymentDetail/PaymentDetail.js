@@ -40,7 +40,7 @@ function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCar
             MySwal.fire({
                 icon: 'success',
                 title: 'Successful!',
-                text: 'Your order wil be processed soon.',
+                text: 'Your order will be processed soon.',
             })
         }
         else {
