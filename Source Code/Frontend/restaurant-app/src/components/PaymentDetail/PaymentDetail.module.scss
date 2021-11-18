@@ -95,6 +95,38 @@
                 background: #00ff4c;
             }
         }
+
+        .CCDetail{
+            padding: 0px 20px;
+            margin-top: 10px;
+            color: #00aeff;
+
+            .cardNumber{
+                input{
+                    height: 20px;
+                    width: 200px;
+                    margin-bottom: 10px;
+                }
+            }
+            .dateAndCvv{
+                display: grid;
+                grid-template-columns: auto auto;
+                justify-content: space-between;
+                .date{
+                    input{
+                        height: 22px;
+                        width: 150px;
+                        margin-bottom: 10px;
+                    }
+                }
+                .cvv{
+                    input{
+                        height: 20px;
+                        width: 60px;
+                    }
+                }
+            }
+        }
     }
     .imageLane{
         .image{
@@ -109,7 +141,7 @@
         text-align: center;
         .confirmButton{
             border-radius: 1vw;
-            height: 4vh;
+            height: 6vh;
             width: 20vw;
             
             color: black;
@@ -122,14 +154,14 @@
         }
         .cancelButton{
             border-radius: 1vw;
-            height: 4vh;
+            height: 6vh;
             width: 20vw;
             
             color: #00aeff;
             background-color: white;
             font-size: 3vh;
             text-align: center;
-            margin-top: 3vh;
+            margin-top: 2vh;
             font-family: 'Times New Roman', Times, sans-serif;
             font-weight: bold;
         }
