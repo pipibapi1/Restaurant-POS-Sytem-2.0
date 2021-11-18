@@ -95,12 +95,19 @@ function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCar
                                 <FontAwesomeIcon icon={faTimes}/>
                             </button>
                         </div>
-                        <div className = {style.total}>
+                        <div class={style.price}>
+                            <h1>Total cost: 
+                                <div className = {style.totalValue}>
+                                    {paymentDetail.total.toLocaleString()} VND
+                                </div>
+                            </h1>
+                        </div>
+                        {/* <div className = {style.total}>
                             Total cost: 
                             <div className = {style.totalValue}>
                                 {paymentDetail.total.toLocaleString()} VND
                             </div>
-                        </div>
+                        </div> */}
                         <div className = {style.choosePayment}>
                             Choose payment method:
                         </div>
@@ -116,18 +123,26 @@ function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCar
                             </div>
                             {showCCDetail ? (
                                 <div className={style.CCDetail}>
+                                    <div className={style.cardName}>
+                                        Name:
+                                        <div className={style.inputText}>
+                                            <input type="text" name="Name" id="Name" placeholder = "Name"></input>
+                                        </div>
+                                    </div>
                                     <div className={style.cardNumber}>
-                                        Card number:<br/>
-                                        <input type="text" name="cardNum" id="cardNum"></input>
+                                        Card number:
+                                        <div className={style.inputText}>
+                                            <input type="text" name="cardNum" id="cardNum" placeholder = "Card number"></input>
+                                        </div>
                                     </div>
                                     <div className={style.dateAndCvv}>
                                         <div className={style.date}>
-                                            Expiry date:<br/>
+                                            Expiry date:
                                             <input type="date" name="exDate" id="exDate"></input>
                                         </div>
                                         <div className={style.cvv}>
-                                            CVV:<br/>
-                                            <input type="password" name="cvv" id="cvv"></input>
+                                            CVV:
+                                            <input type="password" name="cvv" id="cvv" placeholder = "123"></input>
                                         </div>
                                     </div>
                                 </div>
