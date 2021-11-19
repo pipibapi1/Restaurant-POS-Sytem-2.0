@@ -1,75 +1,166 @@
+@import '../../variable';
+
 .modal{
-    
+    width: 850px;
+    //height: 600px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    border-radius: 15px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
     .header{
         color: grey;
         font-size: 20px;
-        font-weight: 200px;
+        font-weight: 200;
         background-color: #f5f5f5;
-        position: absolute;
-        top : 0;
-        left : 0;
-        right : 0;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding: 5px;
+        align-items: center;
+        padding: 10px 20px;
         border-radius: 25px 25px 0px 0px;
         .label{
-            margin-left: 10px;
-            margin-top: 5px;
             font-size: 25px;
             color: black;
-            font-weight: 1000;
-        }
-        .closeButton{
-            background: none ;
-            border: none;
+            font-weight: 500;
         }
     }
-    .imageLane{
+    .flexContainer {
+        padding: 30px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: row;
         .image{
-            border-radius: 10px 10px 10px 10px;
-            height: 180px;
-            width: 180px;
-            margin-top: 10px;
-            margin-left: 10px;
+            width: 300px;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .infoLane {
+            flex-grow: 1;
+            margin-left: 40px;
+            padding: 0 10px;
+            .basicInfos {
+                display: flex;
+                justify-content: flex-start;
+                font-size: 20px;
+                font-weight: 600;
+                //border-bottom: 1px solid $gray-line;
+                .nameColumn {
+                    .category {
+                        margin-top: 15px;
+                        font-weight: 500;
+                        font-size: 16px;
+                    }
+                }
+                .priceColumn {
+                    flex-grow: 1;
+                    text-align: right;
+                    .price {
+                        margin-top: 15px;
+                        font-weight: 500;
+                        color: red;
+                        font-size: 16px;
+                    }
+                }
             }
-    }
-    
-   .infoLane{
-    .adjustQuanity{
-        .add{
-            margin: 0px 10px;
-            height: 24px;
-            width: 24px;
-            background-color: white;
-            color: red;
-            border-color: red;
-            border-radius: 12px;
+            .description {
+                margin-top: 20px;
+                padding: 20px 0;
+                //border-bottom: 1px solid $gray-line;
+                color: $font-darkgray;
+            }
+            .noteArea {
+                margin-top: 20px;
+                .noteLabel {
+                    color: $theme-green;
+                    font-weight: 500;
+                    font-size: 18px;
+                }
+                .noteText {
+                    margin-top: 10px;
+                    display: block;
+                    border-radius: 5px;
+                    resize: none;
+                    width: 100%;
+                    font-family: inherit;
+                    padding: 10px;
+                    color: $font-lightgray;
+                    line-height: 1.25;
+                    height: 80px;
+                    border: 1px solid $gray-line;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
         }
-        
-        .remove{
-            margin: 0px 10px;
-            height: 24px;
-            width: 24px;
-            background-color: white;
-            color:gray;
-            border-color: gray;
-            border-radius: 12px;
+    }
+    .addItemArea {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 15px;
+        .quantityContainer {
+            display: flex;
+            align-items: center;
+            .adjustQuantity {
+                margin-left: 15px;
+                border: 1px solid $gray-line;
+                padding: 5px 10px;
+                border-radius: 10px;
+                width: 150px;
+                display: flex;
+                justify-content: space-between;
+                font-size: 16px;
+                button {
+                    background: white;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 18px;
+                    font-family: inherit;
+                    color: $font-darkgray;
+                    padding: 0 5px;
+                }
+                .quantityInput {
+                    border: none;
+                    width: 60px;
+                    text-align: center;
+                    font-size: inherit;
+                    font-family: inherit;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+        .addItemBtn {
+            border-radius: 5px;
+            background: $theme-green;
+            color: white;
+            padding: 10px;
+            width: 300px;
+            text-align: center;
+            font-weight: 500;
+            cursor: pointer;
         }
     }
-    .addButton{
-        border-radius: 1vw;
-        height: 6vh;
-        width: 29vw;
-        
-        color: white;
-        background-color: red;
-        font-size: 2vw;
-        text-align: center;
-        margin: 1vw;
-        font-family: 'Times New Roman', Times, serif;
-    }
-   }
-    
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }

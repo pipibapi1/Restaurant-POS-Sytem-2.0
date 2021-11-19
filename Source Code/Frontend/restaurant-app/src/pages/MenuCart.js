@@ -1,48 +1,69 @@
-import React from 'react'
-import {  Menu, ShoppingCart } from "../components";
-import style from './ShoppingCart.module.scss'
-import { useState } from 'react';
+import React, {useEffect, useState} from 'react'
+import {Menu, ShoppingCart} from "../components";
+import style from './MenuCart.module.scss'
 import ItemDetail from '../components/ItemDetail/ItemDetail';
-import PaymentDetail from '../components/PaymentDetail/PaymentDetail';
-
+import PaymentDetail from '../components/PaymentDetail/PaymentDetail'
 
 const MenuCart = () => {
-  const [showDetail, setShowDetail] = useState(false);
+  const [isShowDetail, setShowDetail] = useState(false);
   const [itemDetail, setItemDetail] = useState("");
-  const [showPayment, setShowPayment] = useState(false);
+  const [isShowPayment, setShowPayment] = useState(false);
   const [paymentDetail, setPaymentDetail] = useState("");
-
   const [cartItems, setCartItems] = useState([]);
-  const onAddInfo = (product) => {
-      setShowDetail(true);
-      setItemDetail(product);
+  const [menuItems, setMenuItems] = useState([]);
+
+  useEffect(() => {
+    const fetchMenuItems = async () => {
+      const res = await fetch('/items/get-all')
+      const data = await res.json()
+      setMenuItems(data)
+    }
+    fetchMenuItems()
+  }, [])
+
+
+  const showDetailHandler = (productId) => {
+    setShowDetail(true);
+    const product = menuItems.find((item) => item.id === productId)
+    setItemDetail(product);
   }
+
   const closeDetail = () => {
     setShowDetail(false);
   }
-  const onAdd = (product, quantity) => {
-    const exist = cartItems.find((x) => x.id === product.id);
-    if (exist) {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty + quantity } : x
-        )
-      );
+
+  const onAddItemQuantity = (id, amount) => {
+    // const exist = cartItems.find((item) => item.id === id);
+    // if (exist) {
+    //   setCartItems(
+    //     cartItems.map((x) =>
+    //       x.id === product.id ? { ...exist, qty: exist.qty + quantity } : x
+    //     )
+    //   );
+    // } else {
+    //   setCartItems([...cartItems, { ...product, qty: quantity }]);
+    // }
+    if (amount === 0)
+      return;
+    const itemIdx = cartItems.findIndex((item) => item.id === id)
+    if (itemIdx >= 0) {
+      let newCartItems = [...cartItems]
+      const newQuantity = newCartItems[itemIdx].quantity + amount
+      if (newQuantity === 0) {
+        setCartItems(newCartItems.filter(item => item.id !== id))
+      } else {
+        newCartItems[itemIdx] = {...newCartItems[itemIdx], quantity: newQuantity}
+        setCartItems(newCartItems)
+      }
     } else {
-      setCartItems([...cartItems, { ...product, qty: quantity }]);
+      const newItem = menuItems.find(item => item.id === id)
+      const newCartItems = [...cartItems, {...newItem, quantity: amount}]
+      setCartItems(newCartItems)
     }
   };
-  const onRemove = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
-    if (exist.qty === 1) {
-      setCartItems(cartItems.filter((x) => x.id !== product.id));
-    } else {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
-        )
-      );
-    }
+
+  const onRemove = (id) => {
+    setCartItems((cartItems) => cartItems.filter(item => item.id !== id))
   };
 
   const closePaymentDetail = () => {
@@ -55,32 +76,26 @@ const MenuCart = () => {
   const clearCart = () => {
     setCartItems([]);
   }
-    return (
-
-        <div className={style.flexContainer}>
-          <div className={style.menuContainer}>
-            <Menu onAdd={onAddInfo}> </Menu>
-          </div>
-          
-          <div className={style.cartContainer}>
-            <ShoppingCart 
-                   countCartItems={cartItems.length}
-                   cartItems={cartItems}
-                   onAdd={onAdd}
-                   onRemove={onRemove}
-                   openPayment={openPayment}
-            >
-              </ShoppingCart>
-          </div>
-          <div >
-              <ItemDetail  showDetail={showDetail} itemDetail={itemDetail} closeDetail={closeDetail} onAdd={onAdd}/>
-          </div>
-          <div>
-              <PaymentDetail showPayment={showPayment} paymentDetail={paymentDetail} closePaymentDetail={closePaymentDetail} clearCart={clearCart}/>
-          </div>
+  return (
+      <div className={style.flexContainer}>
+        <div className={style.menuContainer}>
+          <Menu showDetailHandler={showDetailHandler} onAddItemQuantity={onAddItemQuantity} menuItems={menuItems}/>
         </div>
 
-    )
+        <div className={style.cartContainer}>
+          <ShoppingCart
+              cartItems={cartItems}
+              onAddItemQuantity={onAddItemQuantity}
+              openPayment={openPayment}
+              onRemove={onRemove}
+          />
+        </div>
+        {isShowDetail && <ItemDetail itemDetail={itemDetail} closeDetail={closeDetail} onAddItemQuantity={onAddItemQuantity}/>}
+
+        {isShowPayment && <PaymentDetail paymentDetail={paymentDetail} closePaymentDetail={closePaymentDetail} clearCart={clearCart}/>}
+      </div>
+
+  )
 }
 
 export default MenuCart

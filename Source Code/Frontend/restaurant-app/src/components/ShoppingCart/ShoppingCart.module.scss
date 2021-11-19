@@ -1,24 +1,11 @@
-.ShoppingCart{
-    //position: absolute;
-    //top : 0;
-    //right : 0;
-    //bottom : 0;
-    //width: 33vw;
-    //height : 100vh;
-    width: 33vw;
-    height : 75vh;
-    background-color: white;
-    color: black;
-    overflow-y: scroll;
-    font-family: 'Times New Roman', Times, serif;
-
-    #yourCart{
-        display: grid;
-        grid-template-columns: auto auto;
-        vertical-align: middle;
-        margin: 1vw;
-
-        #cartTitle{
+@import '../../variable';
+.container {
+    padding: 10px;
+    .cartHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .cartTitle{
             font-size: 2vw;
             font-weight: 700;
             color: red;
@@ -26,26 +13,18 @@
             text-align: left;
         }
 
-        #Dinein{
-            vertical-align: bottom;
-            text-align: right;
-            #dineInBtn{
-                border-radius: 1vw;
-                margin-top: 1vw;
-                padding: 5px 10px;
-                font-weight: 600;
-                font-size: 1vw;
-                font-family: 'Times New Roman', Times, serif;
-                color: #555555;
-                background: lightskyblue;
-            }
+        .dineInBtn{
+            background: white;
+            border: 1px solid $dark-blue;
+            color: $dark-blue;
+            border-radius: 50px;
+            font-weight: bold;
+            padding: 10px 0;
+            width: 100px;
         }
     }
-    #listItem{
-        margin:1vw;
-        font-size: 2vw;
-       
-        //text-align: center;
+    .cartItemsContainer {
+
     }
     #cost{
         display: grid;
@@ -66,11 +45,8 @@
             color: red;
         }
     }
-
-   
-    @import '../../variable';
-    
 }
+
 .cartItemCard{
     background-color: white;
     border: 1px solid #eeeeee;
@@ -131,9 +107,6 @@
 
 .checkOut{
     border: black;
-    position: absolute;
-    width: 33vw;
-    height : 25vh;
     .total{
         flex-grow: 1;
         display: flex;
@@ -156,16 +129,11 @@
         color: #ff0000;
     }
     #sendOrder{
-        border-radius: 1vw;
-        height: 6vh;
-        width: 29vw;
-        
         color: white;
         background-color: red;
-        font-size: 4vh;
+        font-size: 35px;
         text-align: center;
         margin: 1vw;
-        font-family: 'Times New Roman', Times, serif;
     }
     
 }

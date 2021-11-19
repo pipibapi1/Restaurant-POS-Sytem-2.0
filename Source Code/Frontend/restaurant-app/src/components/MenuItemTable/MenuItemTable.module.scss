@@ -1,19 +1,19 @@
 @import '../../variable';
 
 .container {
-  flex-grow: 1;
   padding: 20px 30px;
+  overflow-y: scroll;
+  height: 100%;
   .categoryLabel {
     margin-left: 30px;
     padding-bottom: 20px;
     font-weight: 500;
     font-size: 25px;
-    font-family: 'Poppins', sans-serif;
   }
   .gridContainer {
     margin: 0 auto;
     display: grid;
-    width: 1000px;
+    width: 100%;
     grid-template-columns: repeat(3, 1fr);
   }
 }

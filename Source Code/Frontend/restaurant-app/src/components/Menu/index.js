@@ -5,7 +5,7 @@ import MenuItemTable from "../MenuItemTable";
 import style from './Menu.module.scss'
 
 const Menu = (props) => {
-  const{onAdd} = props;
+  const { showDetailHandler, onAddItemQuantity, menuItems } = props;
   const [curCategory, setCurCategory] = useState('')
   const switchCurCategory = (name) => {
     if (name === curCategory) {
@@ -19,7 +19,12 @@ const Menu = (props) => {
   return (
       <div className={style.menuContainer}>
         <CategoryBar onSwitchCurCategory = {switchCurCategory} selectedCategory={curCategory}/>
-        <MenuItemTable curCategory = {curCategory} onAdd={onAdd}/>
+        <MenuItemTable
+            curCategory={curCategory}
+            onAddItemQuantity={onAddItemQuantity}
+            showDetailHandler={showDetailHandler}
+            menuItems={menuItems}
+        />
       </div>
   );
 };

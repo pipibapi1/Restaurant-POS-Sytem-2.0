@@ -27,7 +27,7 @@ const MODAL_STYLES = {
   }
 
 
-function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCart}){
+function PaymentDetail({paymentDetail, closePaymentDetail, clearCart}){
     const [errMessage, setErrMessage] = useState("");
     const MySwal = withReactContent(Swal);
     const [showCCDetail, setShowCCDetail] = useState(false);
@@ -35,9 +35,9 @@ function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCar
     const sendOrder = () => {
         let byMoneyRadio = document.getElementById("byMoney");
         let byCreditCardRadio = document.getElementById("byCreditCard");
-        if ((byCreditCardRadio.checked == true) || (byMoneyRadio.checked == true))
+        if ((byCreditCardRadio.checked === true) || (byMoneyRadio.checked === true))
         {
-            if (byCreditCardRadio.checked == true){
+            if (byCreditCardRadio.checked === true){
                 let cardNum = document.getElementById("cardNum").value;
                 let exDate = document.getElementById("exDate").value;
                 let cvv = document.getElementById("cvv").value;
@@ -84,68 +84,63 @@ function PaymentDetail({showPayment, paymentDetail, closePaymentDetail, clearCar
 
     return (
         <div>
-            {showPayment ?(
-                <>
-                <div style={OVERLAY_STYLES}/>
-                <div style={MODAL_STYLES}>
-                    <div className={style.modal}>
-                        <div className={style.header}>
-                            <div className={style.label}>CONFIRM PURCHASE</div>
-                            <button className={style.closeButton} onClick={close} > 
-                                <FontAwesomeIcon icon={faTimes}/>
-                            </button>
-                        </div>
-                        <div className = {style.total}>
-                            Total cost: 
-                            <div className = {style.totalValue}>
-                                {paymentDetail.total.toLocaleString()} VND
-                            </div>
-                        </div>
-                        <div className = {style.choosePayment}>
-                            Choose payment method:
-                        </div>
-                        <div className={style.errMessage}>{errMessage}</div>
-                        <div className = {style.paymentMethod}>
-                            <div className={style.radioItem}>
-                                <input type="radio" id="byMoney" name="method" value="byMoney" onClick={() => setShowCCDetail(false)}/>
-                                <label htmlFor="byMoney">Pay at the counter</label><br/>
-                            </div>
-                            <div className={style.radioItem}>
-                                <input type="radio" id="byCreditCard" name="method" value="byCreditCard"  onClick={() => setShowCCDetail(true)}/>
-                                <label htmlFor="byCreditCard" >Credit card</label><br/>
-                            </div>
-                            {showCCDetail ? (
-                                <div className={style.CCDetail}>
-                                    <div className={style.cardNumber}>
-                                        Card number:<br/>
-                                        <input type="text" name="cardNum" id="cardNum"></input>
-                                    </div>
-                                    <div className={style.dateAndCvv}>
-                                        <div className={style.date}>
-                                            Expiry date:<br/>
-                                            <input type="date" name="exDate" id="exDate"></input>
-                                        </div>
-                                        <div className={style.cvv}>
-                                            CVV:<br/>
-                                            <input type="password" name="cvv" id="cvv"></input>
-                                        </div>
-                                    </div>
-                                </div>
-                            ):null}
-                        </div>
-                        <div className = {style.buttonField}>
-                            <button onClick={sendOrder} className={style.confirmButton}>
-                                Confirm
-                            </button><br/>
-                            <button onClick={close} className={style.cancelButton}>
-                                Cancel
-                            </button>
+            <div style={OVERLAY_STYLES}/>
+            <div style={MODAL_STYLES}>
+                <div className={style.modal}>
+                    <div className={style.header}>
+                        <div className={style.label}>CONFIRM PURCHASE</div>
+                        <button className={style.closeButton} onClick={close} >
+                            <FontAwesomeIcon icon={faTimes}/>
+                        </button>
+                    </div>
+                    <div className = {style.total}>
+                        Total cost:
+                        <div className = {style.totalValue}>
+                            {paymentDetail.total.toLocaleString()} VND
                         </div>
                     </div>
+                    <div className = {style.choosePayment}>
+                        Choose payment method:
+                    </div>
+                    <div className={style.errMessage}>{errMessage}</div>
+                    <div className = {style.paymentMethod}>
+                        <div className={style.radioItem}>
+                            <input type="radio" id="byMoney" name="method" value="byMoney" onClick={() => setShowCCDetail(false)}/>
+                            <label htmlFor="byMoney">Pay at the counter</label><br/>
+                        </div>
+                        <div className={style.radioItem}>
+                            <input type="radio" id="byCreditCard" name="method" value="byCreditCard"  onClick={() => setShowCCDetail(true)}/>
+                            <label htmlFor="byCreditCard" >Credit card</label><br/>
+                        </div>
+                        {showCCDetail ? (
+                            <div className={style.CCDetail}>
+                                <div className={style.cardNumber}>
+                                    Card number:<br/>
+                                    <input type="text" name="cardNum" id="cardNum"></input>
+                                </div>
+                                <div className={style.dateAndCvv}>
+                                    <div className={style.date}>
+                                        Expiry date:<br/>
+                                        <input type="date" name="exDate" id="exDate"></input>
+                                    </div>
+                                    <div className={style.cvv}>
+                                        CVV:<br/>
+                                        <input type="password" name="cvv" id="cvv"></input>
+                                    </div>
+                                </div>
+                            </div>
+                        ):null}
+                    </div>
+                    <div className = {style.buttonField}>
+                        <button onClick={sendOrder} className={style.confirmButton}>
+                            Confirm
+                        </button><br/>
+                        <button onClick={close} className={style.cancelButton}>
+                            Cancel
+                        </button>
+                    </div>
                 </div>
-                </>
-            )
-            : null}
+            </div>
         </div>
         
     )
