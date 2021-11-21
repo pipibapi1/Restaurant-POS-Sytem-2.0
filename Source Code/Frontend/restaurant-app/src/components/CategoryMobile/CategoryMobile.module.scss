@@ -1,0 +1,14 @@
+@import '../../variable';
+
+.categoryContainer {
+    display: inline-block;
+    white-space: nowrap;
+    padding: 5px 10px 5px 10px;
+    font-weight: 500;
+    border-bottom: 1px solid $gray-canvas;
+
+}
+.selected {
+    color: $theme-green;
+    border-bottom: 1px solid $theme-green;
+}

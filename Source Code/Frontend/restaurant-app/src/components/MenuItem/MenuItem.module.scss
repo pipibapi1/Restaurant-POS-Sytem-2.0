@@ -2,7 +2,6 @@
 
 .itemContainer {
   border: none;
-  margin: 0 30px 40px 30px;
   background: white;
   border-radius: 10px;
   box-shadow: 0 9px 18px 0 rgba(0, 0, 0, 0.075);
@@ -48,6 +47,15 @@
         background: none;
         padding: 0;
       }
+    }
+  }
+}
+
+@media(max-width: 500px) {
+  .itemContainer {
+    height: 400px;
+    .itemImg {
+      height: 250px;
     }
   }
 }

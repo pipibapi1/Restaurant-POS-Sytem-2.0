@@ -53,19 +53,6 @@ const ShoppingCart = (props) => {
             {isDineIn}
           </button>
         </div>
-
-        {/*list item*/}
-        {/*<div className={styles.cartItemsContainer}>*/}
-        {/*  {cartItems.length === 0 && <div>Cart is empty</div>}*/}
-        {/*  {cartItems.map((cartItem, idx) =>*/}
-        {/*    <CartItem*/}
-        {/*        key={idx}*/}
-        {/*        idx={idx}*/}
-        {/*        item={cartItem}*/}
-        {/*        onAddItemQuantity={onAddItemQuantity}*/}
-        {/*    />*/}
-        {/*  )}*/}
-        {/*</div>*/}
         
         <div id={styles.listItem}>
         {cartItems.length === 0 && <div>Cart is empty</div>}

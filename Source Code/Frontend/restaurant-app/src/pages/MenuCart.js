@@ -3,6 +3,8 @@ import {Menu, ShoppingCart} from "../components";
 import style from './MenuCart.module.scss'
 import ItemDetail from '../components/ItemDetail/ItemDetail';
 import PaymentDetail from '../components/PaymentDetail/PaymentDetail'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 
 const MenuCart = () => {
   const [isShowDetail, setShowDetail] = useState(false);
@@ -76,12 +78,19 @@ const MenuCart = () => {
   const clearCart = () => {
     setCartItems([]);
   }
+  const showCartBtn = (
+      <label className={style.cartBtn} htmlFor='cartInput'>
+        <FontAwesomeIcon icon={faShoppingCart}/>
+        <span className={style.cartAmount}>{cartItems.length}</span>
+      </label>)
+
   return (
       <div className={style.flexContainer}>
         <div className={style.menuContainer}>
-          <Menu showDetailHandler={showDetailHandler} onAddItemQuantity={onAddItemQuantity} menuItems={menuItems}/>
+          <Menu showDetailHandler={showDetailHandler} onAddItemQuantity={onAddItemQuantity} menuItems={menuItems} showCartBtn={showCartBtn}/>
         </div>
-
+        <input type='checkbox' className={style.cartInput} id='cartInput'/>
+        <label className={style.cartOverlay} htmlFor='cartInput'> </label>
         <div className={style.cartContainer}>
           <ShoppingCart
               cartItems={cartItems}
@@ -90,6 +99,8 @@ const MenuCart = () => {
               onRemove={onRemove}
           />
         </div>
+
+
         {isShowDetail && <ItemDetail itemDetail={itemDetail} closeDetail={closeDetail} onAddItemQuantity={onAddItemQuantity}/>}
 
         {isShowPayment && <PaymentDetail paymentDetail={paymentDetail} closePaymentDetail={closePaymentDetail} clearCart={clearCart}/>}

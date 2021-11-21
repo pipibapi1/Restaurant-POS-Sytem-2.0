@@ -7,11 +7,15 @@ import axios from 'axios';
 
 
 const MenuItemTable = (props) => {
-  const {curCategory, onAddItemQuantity, showDetailHandler, menuItems} = props;
+  const {curCategory, onAddItemQuantity, showDetailHandler, menuItems, showCartBtn} = props;
 
   return (
       <div className={style.container}>
-        <div className={style.categoryLabel}>{curCategory === '' ? 'All foods' : curCategory}</div>
+        <div className={style.header}>
+          <div className={style.categoryLabel}>{curCategory === '' ? 'All foods' : curCategory}</div>
+          {showCartBtn}
+        </div>
+
         <div className={style.gridContainer}>
           {menuItems.filter((item) => {
             return curCategory === '' || item.category === curCategory

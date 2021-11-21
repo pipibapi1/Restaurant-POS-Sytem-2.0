@@ -1,27 +1,78 @@
 @import '../../variable';
-
 .container {
+  width: 100%;
+}
+.containerMobile {
+  display: none;
+  width: 100%;
+}
+.containerPc {
   padding: 20px;
-  margin: 0 auto;
   display: flex;
+  margin: 0 auto;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   .icon {
     font-size: 50px;
     cursor: pointer;
-    color: $dark-gray;
+    color: $dark-blue;
   }
 }
 
 .gridContainer{
   grid-column-gap: 30px;
   justify-content: center;
-
+  margin: 0 20px;
   .gridItem {
 
   }
 }
 
+@media(max-width: 1000px) {
+  .gridContainer {
+    grid-column-gap: 10px;
+  }
+}
 .disabledIcon {
-  color: $dark-blue !important;
+  color: $dark-gray !important;
+}
+
+@media(max-width: 650px) {
+  .containerPc {
+    display: none;
+  }
+  .containerMobile {
+    display: flex;
+    overflow-x: hidden;
+    position: relative;
+    width: 95vw;
+    align-items: center;
+    padding-right: 20px;
+    .chevronRight {
+      position: absolute;
+      right: 0;
+      z-index: 100;
+    }
+    .filterWrapper {
+      width: 100%;
+      overflow-x: hidden;
+      .filter {
+        display: flex;
+      }
+    }
+  }
+  .containerMobile:after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    top: 0; right: 0;
+
+    background-image: -webkit-linear-gradient(right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    background-image: -moz-linear-gradient(right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    background-image: -ms-linear-gradient(right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    background-image: -o-linear-gradient(right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  }
 }
