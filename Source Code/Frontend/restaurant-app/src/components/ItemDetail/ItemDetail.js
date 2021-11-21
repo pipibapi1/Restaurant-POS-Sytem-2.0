@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import style from './ItemDetail.module.scss'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
-
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const OVERLAY_STYLES = {
   position: 'fixed',
@@ -24,8 +25,22 @@ const ItemDetail = ({itemDetail, closeDetail, onAddItemQuantity}) => {
   }
 
   const handleAddToCartButton = () => {
-    onAddItemQuantity(itemDetail.id, quantity)
-    close()
+    if(quantity == 0)
+    {
+      const MySwal = withReactContent(Swal);
+      MySwal.fire({
+        icon: 'error',
+        title: 'Warning!',
+        text: 'The quantity must be at least 1.',
+    })
+    }
+    else
+    {
+      onAddItemQuantity(itemDetail.id, quantity)
+      close()
+    }
+    
+    
   }
 
   const handleQuantityButton = (value) => {

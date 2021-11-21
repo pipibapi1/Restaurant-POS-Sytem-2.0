@@ -94,16 +94,13 @@ function PaymentDetail({paymentDetail, closePaymentDetail, clearCart}){
                         </button>
                     </div>
                     <div className = {style.total}>
-                        Total cost:
-                        <div className = {style.totalValue}>
-                            {paymentDetail.total.toLocaleString()} VND
-                        </div>
+                        
                         <div className={style.price}>
-                            <h1>Total cost: 
+                            <h2>Total cost: 
                                 <div className = {style.totalValue}>
                                     {paymentDetail.total.toLocaleString()} VND
                                 </div>
-                            </h1>
+                            </h2>
                         </div>
                         {/* <div className = {style.total}>
                             Total cost: 
